@@ -1,0 +1,7 @@
+../Core/Src/command_processor.c:33:6:Start_Process	8	static
+../Core/Src/command_processor.c:44:5:CompareToBrace	72	static
+../Core/Src/command_processor.c:93:6:send_ACK	8	static
+../Core/Src/command_processor.c:98:6:send_NAK	8	static
+../Core/Src/command_processor.c:105:6:module_executed	8	static
+../Core/Src/command_processor.c:116:6:Send_Count	40	static
+../Core/Src/command_processor.c:125:6:processCommand	520	static

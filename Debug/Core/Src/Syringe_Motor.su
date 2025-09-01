@@ -1,0 +1,4 @@
+../Core/Src/Syringe_Motor.c:15:6:Start_Syringe_Motor	16	static
+../Core/Src/Syringe_Motor.c:21:6:Stop_Syringe_Motor	8	static
+../Core/Src/Syringe_Motor.c:28:6:Home_Syringe_Motor	16	static
+../Core/Src/Syringe_Motor.c:54:6:Move_Syringe_Motor	32	static

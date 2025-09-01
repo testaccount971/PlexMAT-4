@@ -1,0 +1,4 @@
+../Core/Src/pump.c:10:6:Pump_On	16	static
+../Core/Src/pump.c:22:6:Pump_Off	16	static
+../Core/Src/pump.c:30:6:WashOrUniversal_Buffer_Pump_Function	16	static
+../Core/Src/pump.c:46:6:Waste_Pump_Function	16	static

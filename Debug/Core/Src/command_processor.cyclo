@@ -1,0 +1,7 @@
+../Core/Src/command_processor.c:33:6:Start_Process	2
+../Core/Src/command_processor.c:44:5:CompareToBrace	4
+../Core/Src/command_processor.c:93:6:send_ACK	1
+../Core/Src/command_processor.c:98:6:send_NAK	1
+../Core/Src/command_processor.c:105:6:module_executed	2
+../Core/Src/command_processor.c:116:6:Send_Count	1
+../Core/Src/command_processor.c:125:6:processCommand	171

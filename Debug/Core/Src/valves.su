@@ -1,0 +1,7 @@
+../Core/Src/valves.c:12:6:Valve_On	16	static
+../Core/Src/valves.c:17:6:Valve_Off	16	static
+../Core/Src/valves.c:23:6:LED_On	16	static
+../Core/Src/valves.c:27:6:LED_Off	16	static
+../Core/Src/valves.c:30:6:Rising_Edge	16	static
+../Core/Src/valves.c:40:6:Alarm_On	16	static
+../Core/Src/valves.c:43:6:Alarm_Off	16	static
