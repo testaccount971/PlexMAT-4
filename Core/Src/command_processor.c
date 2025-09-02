@@ -424,6 +424,7 @@ void processCommand(char *command)
 
 				else if(alarm_type ==2)
 					{
+
 					 LED_Off(YellowLED);
 					 LED_Off(GreenLED);
 					 LED_On(RedLED);
