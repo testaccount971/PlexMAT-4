@@ -650,7 +650,7 @@ void processCommand(char *command)
 							Rising_Edge(VL_EXLED_GATE);
 							HAL_Delay(500);
 
-							Move_Syringe_Motor(0, Airgap);
+					//		Move_Syringe_Motor(0, Airgap);
 
 							if (strcmp(Error, "00") == 0)
 								{
@@ -1126,8 +1126,8 @@ else if(((CompareToBrace(Fluid_Pickup))==1))     //  	  char  Fluid_Pickup[]    
 	 else if (CompareToBrace(Move_Down_Fluid_sense) == 1)  // char  Move_Down_Fluid_sense[]	    ="!MDFS()";
 	 {
 	     unsigned int Unconditional_Movement = 0, Maximum_Distance = 0;
-	     uint32_t avg_frequency = 0;
-	     char msg[128];
+
+//	     char msg[128];
 
 	     send_ACK();
 
@@ -1139,7 +1139,7 @@ else if(((CompareToBrace(Fluid_Pickup))==1))     //  	  char  Fluid_Pickup[]    
 	     }
 
 	     // Step 1: Take baseline frequency at no movement
-	     avg_frequency = Read_Average_Frequency();
+//	     uint32_t avg_frequency = Read_Average_Frequency();-------------------------not used
 /*
 	     snprintf(msg, sizeof(msg), "avg_frequency: %lu Hz\r\n", avg_frequency);
 	     HAL_UART_Transmit(&huart3, (uint8_t *)msg, strlen(msg), HAL_MAX_DELAY);
@@ -1208,7 +1208,7 @@ else if(((CompareToBrace(Fluid_Pickup))==1))     //  	  char  Fluid_Pickup[]    
 			  uint8_t wiper_val = 0;
 			  send_ACK();
 		     sscanf(command, "!WEPOT(%d,%f)", &sensor_no, &voltage);
-		     char msg[64];  // Buffer for UART message
+//		     char msg[64];  // Buffer for UART message
 		       // Print desired voltage to UART for debugging
 //		       snprintf(msg, sizeof(msg), "Desired Voltage for sensor %d = %.3f V\r\n", sensor_no, voltage);
 //		       HAL_UART_Transmit(&huart3, (uint8_t *)msg, strlen(msg), HAL_MAX_DELAY);

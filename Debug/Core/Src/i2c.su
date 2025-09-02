@@ -17,8 +17,8 @@
 ../Core/Src/i2c.c:456:19:MCP4661_ReadWiper0_RAM	120	static
 ../Core/Src/i2c.c:497:6:Test_MCP4661_Corrected	144	static
 ../Core/Src/i2c.c:527:19:MCP4661_ReadStatusRegister	104	static
-../Core/Src/i2c.c:559:9:voltageToStep	88	static
-../Core/Src/i2c.c:776:19:MCP4661_WriteWiper_EEPROM	96	static
+../Core/Src/i2c.c:559:9:voltageToStep	24	static
+../Core/Src/i2c.c:776:19:MCP4661_WriteWiper_EEPROM	32	static
 ../Core/Src/i2c.c:823:19:MCP4661_ReadWiper_EEPROM	136	static
 ../Core/Src/i2c.c:872:6:MCP4661_SetHardwareWriteProtect	16	static
 ../Core/Src/i2c.c:881:6:I2C2_Recover	40	static

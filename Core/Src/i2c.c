@@ -335,7 +335,7 @@ float ADS7828_ReadChannelVoltage(uint8_t channel) {
 uint16_t ADS7828_ReadChannelAdcValue(uint8_t channel) {
     uint16_t adc_val = ADS7828_ReadChannel(channel); // Get raw ADC value
     if (adc_val == 0xFFFF) {
-        return -1.0f; // Return error indicator (negative voltage not possible)
+        return 9.9f; // Return error indicator (negative voltage not possible)
     }
 
     return adc_val; // Return converted voltage
@@ -558,7 +558,7 @@ HAL_StatusTypeDef MCP4661_ReadStatusRegister(I2C_HandleTypeDef *hi2c, uint8_t de
 
 uint8_t voltageToStep(float voltage)
 {
-    char msg[64];  // Buffer for UART message
+//    char msg[64];  // Buffer for UART message
 
     // Print the voltage value
 //    snprintf(msg, sizeof(msg), "Voltage = %.3f V\r\n", voltage);
@@ -780,7 +780,7 @@ HAL_StatusTypeDef MCP4661_WriteWiper_EEPROM(
     uint16_t wiper_value)
 {
     uint8_t cmd[2];
-    char msg[64];
+ //   char msg[64];
     MCP4661_SetHardwareWriteProtect(GPIOB, GPIO_PIN_5, 1); // Enable for ePot 1
 
     // Limit wiper_value to 9 bits (0–256 for MCP4661)

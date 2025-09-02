@@ -131,24 +131,21 @@ void Home_X_Motor(int Direction,uint32_t Maximum_Pulses)
 
 }
 
-
 void Move_X_Motor(int Direction,int distance_pulse,unsigned int Num_Of_Strips)
 {
 	unsigned int Sensor_status,probe_nozzle_strip_gap=300,reagent_bottle_gap=600;
 	unsigned char X_DIR=0;
 	int sensor_reached=0;
-	int half_distance=distance_pulse/2;
 	X_DIR = Direction;
 	if(X_DIR)
 	{
 		pulse_count=0;
 		X_Motor_En;
 		X_Motor_Dir_AClk;
-
 		Start_X_Motor();
 		while(pulse_count<distance_pulse)
 		{
-			Sensor_status =( (!(Sensor_Read(Nozzle_Probe_Position_Sensor))) && (!(Sensor_Read(Reagent_Probe_Position_Sensor)))   );
+			Sensor_status =( (!(Sensor_Read(Nozzle_Probe_Position_Sensor))) && (!(Sensor_Read(Reagent_Probe_Position_Sensor))));
 //			putchr('#');
 //			Send_Count(Sensor_status);
 
@@ -189,28 +186,46 @@ void Move_X_Motor(int Direction,int distance_pulse,unsigned int Num_Of_Strips)
 
 		}
 
-		for(int strip_position=2;strip_position<=Num_Of_Strips;strip_position++)
+		if(sensor_reached==0)
 		{
-			pulse_count=0;
-			while(pulse_count < probe_nozzle_strip_gap)
+			if((strcmp(Error,"E")!=0) && (strcmp(Error,"F")!=0))
+			  {
+				 Stop_X_Motor();
+			  }
+			else
 			{
-				if(distance_pulse >500)
-							{
-								if((pulse_count > 50 ) &&(!(Sensor_Read(Reagent_Probe_Position_Sensor))))
-								{
-									sensor_reached=1;
-									break;
-								}
-							}
-							else
-							{
-								if((pulse_count > 50 ) &&(!(Sensor_Read(Nozzle_Probe_Position_Sensor))))  //tune 500 to the nearest first osition count
-								{
-									sensor_reached=1;
-									break;
-								}
-							}
+				 Error="H"; // 1 st position not reached
+				 Stop_X_Motor();
+			}
+		 return;
+		}
 
+
+		if(strcmp(Error,"00")==0)
+		{
+			for(int strip_position=2;strip_position<=Num_Of_Strips;strip_position++)
+			{
+				pulse_count=0;
+				while(pulse_count < probe_nozzle_strip_gap)
+				{
+					if(distance_pulse >500)
+								{
+									if((pulse_count > 50 ) &&(!(Sensor_Read(Reagent_Probe_Position_Sensor))))
+									{
+										sensor_reached=1;
+										break;
+									}
+								}
+								else
+								{
+									if((pulse_count > 50 ) &&(!(Sensor_Read(Nozzle_Probe_Position_Sensor))))  //tune 500 to the nearest first osition count
+									{
+										sensor_reached=1;
+										break;
+									}
+								}
+
+				}
 			}
 		}
 		 Stop_X_Motor();
@@ -245,16 +260,34 @@ void Move_X_Motor(int Direction,int distance_pulse,unsigned int Num_Of_Strips)
 					break;
 				}
 		}
-		for(int strip_position=2;strip_position<=Num_Of_Strips;strip_position++)
-		{
-			pulse_count=0;
-			while(pulse_count < reagent_bottle_gap)
-			{
 
-				if((pulse_count > 50 )&&( !Sensor_Read(Reagent_Probe_Position_Sensor)))
+		if(sensor_reached==0)
+		{
+				if((strcmp(Error,"E")!=0) && (strcmp(Error,"F")!=0))
+				  {
+					 Stop_X_Motor();
+				  }
+				else
 				{
-					sensor_reached=1;
-					break;
+					 Error="H"; // 1 st position not reached
+					 Stop_X_Motor();
+				}
+			 return;
+		}
+
+		if(strcmp(Error,"00")==0)
+		{
+			for(int strip_position=2;strip_position<=Num_Of_Strips;strip_position++)
+			{
+				pulse_count=0;
+				while(pulse_count < reagent_bottle_gap)
+				{
+
+					if((pulse_count > 50 )&&( !Sensor_Read(Reagent_Probe_Position_Sensor)))
+					{
+						sensor_reached=1;
+						break;
+					}
 				}
 			}
 		}
@@ -266,7 +299,7 @@ void Move_X_Motor(int Direction,int distance_pulse,unsigned int Num_Of_Strips)
 void Move_X_Motor_Next_Position(int Direction,int distance_pulse,unsigned int StripOrReagent)
 {
 //	unsigned int probe_nozzle_strip_gap=300,reagent_bottle_gap=700;
-	unsigned char X_DIR=0,strip_position=0;
+	unsigned char X_DIR=0;
 	int sensor_reached=0;
 
 	X_DIR = Direction;
@@ -319,7 +352,7 @@ void Move_X_Motor_Next_Position(int Direction,int distance_pulse,unsigned int St
 //		             }
 		 Stop_X_Motor();
 
-		if((sensor_reached==0)&& (Error!="G"))
+		if((sensor_reached==0)&& strcmp(Error, "G") != 0)
 		{
 		 Error="H";	// Does not reach next position
 		}
@@ -349,7 +382,7 @@ void Move_X_Motor_Next_Position(int Direction,int distance_pulse,unsigned int St
 				}
 
 		}
-		if((sensor_reached==0)&& (Error!="G"))
+		if((sensor_reached==0)&& strcmp(Error, "G") != 0)
 			{
 			 Error="H";	// Does not reach next position
 			}

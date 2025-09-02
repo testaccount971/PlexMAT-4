@@ -4,4 +4,4 @@
 ../Core/Src/command_processor.c:98:6:send_NAK	8	static
 ../Core/Src/command_processor.c:105:6:module_executed	8	static
 ../Core/Src/command_processor.c:116:6:Send_Count	40	static
-../Core/Src/command_processor.c:125:6:processCommand	520	static
+../Core/Src/command_processor.c:125:6:processCommand	416	static
